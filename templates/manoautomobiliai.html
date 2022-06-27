@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Mano automobiliai</h1><br/>
+    <br/><br/>
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <th scope="col">Markė</th>
+            <th scope="col">Modelis</th>
+            <th scope="col">Pagaminimo metai</th>
+            <th scope="col">Variklis</th>
+            <th scope="col">Valstybinis numeris</th>
+            <th scope="col">VIN kodas</th>
+        </thead>
+        {% for car in mano_automobiliai %}
+            <tbody>
+                <tr>
+                    <th scope="row">{{ car.number }}</th>
+                    <td>{{ car.brand }}</td>
+                    <td>{{ car.model }}</td>
+                    <td>{{ car.years }}</td>
+                    <td>{{ car.emgin }}</td>
+                    <td>{{ car.vin_nr }}</td>
+                </tr>
+            </tbody>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

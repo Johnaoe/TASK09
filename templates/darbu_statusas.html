@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container" style="padding:0">
+    <h1>Automobilis</h1><br/>
+    <table class="table table-hover" >
+        <thead class="thead-dark">
+            <th scope="col">Registracijos laikas</th>
+            <th scope="col">Automobilis</th>
+            <th scope="col">Gedimo aprašymas</th>
+            <th scope="col">Remonto kaina</th>
+            <th scope="col">Statusas</th>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">{{ updated_data.created_at }}</th>
+                <td>{{ updated_data.car }}</td>
+                <td>{{ updated_data.issue }}</td>
+                <td>{{ updated_data.price }}</td>
+                <td>{{ updated_data.status }}</td>
+            </tr>
+            </tbody>
+    </table>
+</div>    
+<br/>
+
+<div class="content-section"><form method="POST" action="#">{{ form.hidden_tag() }}
+    <fieldset class="form-group">
+        <legend class="border-bottom mb-4">Atnaujinti statusą ir kainą</legend>
+        <div class="row">
+            <div class="form-group col-lg-6">
+                {{ form.price.label(class="form-control-label") }}
+                {% if form.price.errors %}
+                    {{ form.price(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.price.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.price(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+            <div class="form-group col-lg-6">
+                {{ form.status.label(class="form-control-label") }}
+                {% if form.status.errors %}
+                    {{ form.status(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.status.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.status(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-lg-12">
+                {{ form.issue.label(class="form-control-label") }}
+                {% if form.issue.errors %}
+                    {{ form.issue(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.issue.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.issue(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+        </div>
+    </fieldset>
+    <div class="form-group">
+        {{ form.submit(class="btn btn-outline-dark btn-block") }}
+    </div>
+</form></div>
+
+
+{% endblock %}
